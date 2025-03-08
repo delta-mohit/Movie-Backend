@@ -19,7 +19,7 @@ connectDB();
 const app = express();
 
 // ✅ Use CORS Middleware
-const allowedOrigins = "*";
+const allowedOrigins = "http://localhost:5173";
 app.use(
   cors({
     origin: allowedOrigins,
