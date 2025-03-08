@@ -19,11 +19,22 @@ connectDB();
 const app = express();
 
 // ✅ Use CORS Middleware
+const allowedOrigins = ["http://localhost:5173", "*"];
 app.use(
   cors({
-    origin: "*",
+    origin: function (origin, callback) {
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        allowedOrigins.includes("*")
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true, // ✅ Allow cookies
-    methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allow these HTTP methods
+    methods: ["GET", "POST", "PUT","PATCH", "DELETE"], // ✅ Allow these HTTP methods
   })
 );
 
