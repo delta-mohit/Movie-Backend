@@ -24,6 +24,10 @@ app.use(cookieParser());
 
 const PORT = process.env.PORT || 3000;
 
+app.get("/", (req, res) => {
+  res.send("Hey, I am server. I am running smoothly");
+});
+
 // Routes
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/genre", genreRoutes);
@@ -31,9 +35,6 @@ app.use("/api/v1/movies", moviesRoutes);
 app.use("/api/v1/upload", uploadRoutes);
 
 const __dirname = path.resolve();
-app.use(
-  "/upload",
-  express.static(path.join(__dirname, "backend" , "upload"))
-);
+app.use("/upload", express.static(path.join(__dirname, "upload")));
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

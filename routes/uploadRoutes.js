@@ -7,7 +7,7 @@ const router = express.Router();
 const __dirname = path.resolve(); //give the path of that place where `node index.js` is running or root directory path
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname,"backend","upload"));
+    cb(null, path.join(__dirname,"upload"));
   },
 
   filename: (req, file, cb) => {
