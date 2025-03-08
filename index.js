@@ -3,6 +3,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import path from "path";
+import cors from "cors";
 
 // Files
 import connectDB from "./config/db.js";
@@ -16,6 +17,15 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+// ✅ Use CORS Middleware
+app.use(
+  cors({
+    origin: "*",
+    credentials: true, // ✅ Allow cookies
+    methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allow these HTTP methods
+  })
+);
 
 // middlewares
 app.use(express.json());
