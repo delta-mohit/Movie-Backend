@@ -19,7 +19,7 @@ connectDB();
 const app = express();
 
 // ✅ Use CORS Middleware
-const allowedOrigins = "*";
+const allowedOrigins = "https://movie-frontend-delta-three.vercel.app";
 app.use(
   cors({
     origin: allowedOrigins,
